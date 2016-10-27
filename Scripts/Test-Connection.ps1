@@ -17,10 +17,34 @@ $conn = New-Object System.Data.SqlClient.SqlConnection
 $conn.ConnectionString = $stringbuilder.ToString()
 $conn.Open()
 
+if($conn.State -eq "Open"){
+    Write-Host "Connected" -ForegroundColor Cyan
 
-    switch ($conn.State)
-{
-"Open" { Write-Host "Do some work"; }
-Default { Write-Host "The connection is $($conn.State).  There has been an error connecting to the database."; }
+}
+else{
+    Write-Host "Connection Failed" -ForegroundColor Red
+    break
 }
 
+$cmd = New-Object System.Data.SqlClient.SqlCommand
+$cmd.Connection = $conn
+
+$cmd.CommandText = "CREATE TABLE Person (
+    Pid int,
+    LastName varchar(30),
+    FirstName varchar(30)
+);"
+
+$cmd.ExecuteNonQuery()
+
+$cmd.CommandText = "INSERT INTO Person (Pid, LastName, Firstname) VALUES(0,'Baggins','Bilbo');"
+
+$cmd.ExecuteNonQuery()
+
+$cmd.CommandText = "SELECT * FROM Person;"
+
+$adapter = New-Object System.Data.SqlClient.SqlDataAdapter $cmd
+$dataset = New-Object
+
+#alternative method, but require multiple connects although much shorter:
+#Invoke-Sqlcmd -ServerInstance $server -Database $db -Username $uname -Password $pass -Query "select * from person"
