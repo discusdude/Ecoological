@@ -5,7 +5,6 @@ $server = "ecooldb.ccd1ufibwvil.us-west-1.rds.amazonaws.com"
 $db = "testdb"
 
 $command = "USE master;
-IF EXISTS(SELECT * FROM sys.databases WHERE name = '$db') DROP DATABASE $db;
-CREATE DATABASE testdb;"
+    SELECT name, database_id, create_date FROM sys.databases;"
 
 Invoke-Sqlcmd -ServerInstance $server -Username $uname -Password $pass -Query $command
