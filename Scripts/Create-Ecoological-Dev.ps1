@@ -6,6 +6,6 @@ $db = "Ecooldev"
 
 $command = "USE master;
 IF EXISTS(SELECT * FROM sys.databases WHERE name = '$db') DROP DATABASE $db;
-CREATE DATABASE testdb;"
+CREATE DATABASE $db;"
 
 Invoke-Sqlcmd -ServerInstance $server -Username $uname -Password $pass -Query $command
