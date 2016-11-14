@@ -1,8 +1,8 @@
 ﻿$credential = Get-Credential
 $uname = $credential.UserName
-$pass =  $credential.GetNetworkCredential().Password
+$pass = $credential.GetNetworkCredential().Password
 $server = "ecooldb.ccd1ufibwvil.us-west-1.rds.amazonaws.com"
-$db = "ecooldev"
+$db = "ecoolprod"
 
 $command = "
     IF OBJECT_ID('supply','U') IS NOT NULL
