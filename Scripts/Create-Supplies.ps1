@@ -50,7 +50,7 @@ $command = "
         price MONEY NOT NULL,
         PRIMARY KEY(name)
     );
-    
+
 
     INSERT INTO supplyNames(name) VALUES
     ('Display Boxes'),
@@ -58,7 +58,7 @@ $command = "
     ('Display Product'),
     ('Internet Product'),
     ('75 ft rolls'),
-    ('Areo Boxes'),
+    ('Aero Boxes'),
     ('Bumper Shellz');
 
     INSERT INTO conditions(condition) VALUES
@@ -76,8 +76,8 @@ $command = "
     ('Internet Product', 'Bad', 0.5),
     ('75 ft rolls', 'Good', 1),
     ('75 ft rolls', 'Bad', 0.5),
-    ('Areo Boxes', 'Good', 1),
-    ('Areo Boxes', 'Bad', 0.5),
+    ('Aero Boxes', 'Good', 1),
+    ('Aero Boxes', 'Bad', 0.5),
     ('Bumper Shellz', 'Good', 1),
     ('Bumper Shellz', 'Bad', 0.5);
 
@@ -87,7 +87,7 @@ $command = "
     ('Display Product', 9.99),
     ('Internet Product', 7.00),
     ('75 ft rolls', 5.00),
-    ('Areo Boxes', 200.00),
+    ('Aero Boxes', 200.00),
     ('Bumper Shellz', 14.20);
     
 "
