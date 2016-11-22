@@ -10,10 +10,13 @@ $command = "
     CREATE TABLE inventories(
         invid INT IDENTITY,
         date DATE,
-        type VARCHAR(255),
+        name VARCHAR(255) REFERENCES supplyNames(name) NOT NULL,
+        condition VARCHAR(255) REFERENCES conditions(condition) NOT NULL,
+        type VARCHAR(255) NOT NULL,
         count INT,
         PRIMARY KEY(invid)
     );
 "
 
 Invoke-Sqlcmd -ServerInstance $server -Database $db -Username $uname -Password $pass -Query $command
+#name, type, conditions
