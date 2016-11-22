@@ -14,7 +14,8 @@ $command = "
         condition VARCHAR(255) REFERENCES conditions(condition) NOT NULL,
         type VARCHAR(255) NOT NULL,
         count INT,
-        PRIMARY KEY(invid)
+        PRIMARY KEY(invid),
+        CONSTRAINT chk_type CHECK(type IN('Product','Supply'))
     );
 "
 

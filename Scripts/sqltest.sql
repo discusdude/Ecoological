@@ -7,7 +7,8 @@ CREATE TABLE inventories(
     condition VARCHAR(255) REFERENCES conditions(condition) NOT NULL,
     type VARCHAR(255) NOT NULL,
     count INT,
-    PRIMARY KEY(invid)
+    PRIMARY KEY(invid),
+    CONSTRAINT chk_type CHECK(type IN('Product','Supply'))
 );
 
 SELECT TABLE_NAME FROM Ecooldev.INFORMATION_SCHEMA.Tables WHERE TABLE_TYPE = 'BASE TABLE'
