@@ -127,8 +127,7 @@ CREATE TABLE customers(
     custid INT IDENTITY,
     lastName VARCHAR(255),
     firstName VARCHAR(255),
-    PRIMARY KEY(custid)
-    
+    PRIMARY KEY(custid)    
 );
 CREATE TABLE custEmails(
     custid INT NOT NULL,
@@ -144,10 +143,11 @@ CREATE TABLE states(
 
 --Look into on update cascade
 CREATE TABLE custShipping(
-    custid INT REFERENCES customers(custid) NOT NULL,
+    custid INT,
     state VARCHAR(64) NOT NULL,
     zipCode INT,
     CONSTRAINT FK_shipping_state FOREIGN KEY (state) REFERENCES states(name) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FK_custshipping_custid FOREIGN KEY (custid) REFERENCES customers(custid) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT chk_zipCode CHECK(zipCode >= 10000 AND zipCode  <= 99999) --custShipping constraint to force zip code to have correct number of digits
 );
 
@@ -167,7 +167,7 @@ IF OBJECT_ID('sales','U') IS NOT NULL
 CREATE TABLE sales(
     date DATETIME NOT NULL,
     name VARCHAR(255) REFERENCES supplyNames(name) NOT NULL,
-    count INT  NOT NULL,
+    count INT NOT NULL,
     PRIMARY KEY (date, name)
 )
 
