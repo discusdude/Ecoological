@@ -4,7 +4,7 @@ IF OBJECT_ID('inventories','U') IS NOT NULL
 IF OBJECT_ID('sales','U') IS NOT NULL
     DROP TABLE sales;
 
---supplies
+--supplies------------------------------------------------------------------------------------
 IF OBJECT_ID('supplies','U') IS NOT NULL
     DROP TABLE supplies;
 IF OBJECT_ID('basePrices','U') IS NOT NULL
@@ -50,6 +50,7 @@ CREATE TABLE supplies(
     condition VARCHAR(255) REFERENCES conditions(condition) NOT NULL,
     count INT,
     PRIMARY KEY(name)
+    --CONSTRAINT chk_type_supplies CHECK(type IN('Product','Supply'))
 );
 
 CREATE TABLE basePrices(
@@ -66,6 +67,11 @@ INSERT INTO supplyNames(name) VALUES
 ('Internet Product'),
 ('75 ft rolls'),
 ('Aero Boxes'),
+('Bumper Shellz');
+
+INSERT INTO productNames(product) VALUES
+('Aero Box'),
+('Gap Shield'),
 ('Bumper Shellz');
 
 INSERT INTO conditions(condition) VALUES
@@ -97,7 +103,7 @@ INSERT INTO basePrices(name, price) VALUES
 ('Aero Boxes', 200.00),
 ('Bumper Shellz', 14.20);
 
---Iventory
+--Iventory------------------------------------------------------------------------------------
 IF OBJECT_ID('inventories','U') IS NOT NULL
     DROP TABLE inventories;
 CREATE TABLE inventories(
@@ -107,11 +113,11 @@ CREATE TABLE inventories(
     condition VARCHAR(255) REFERENCES conditions(condition) NOT NULL,
     type VARCHAR(255) NOT NULL,
     count INT,
-    PRIMARY KEY(invid),
-    CONSTRAINT chk_type CHECK(type IN('Product','Supply'))
+    PRIMARY KEY(invid)
+    --CONSTRAINT chk_type CHECK(type IN('Product','Supply'))
 );
 
---Customers
+--Customers------------------------------------------------------------------------------------
 
 IF OBJECT_ID('custEmails','U') IS NOT NULL
     DROP TABLE custEmails;
