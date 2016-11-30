@@ -70,9 +70,9 @@ INSERT INTO supplyNames(name) VALUES
 ('Bumper Shellz');
 
 INSERT INTO productNames(product) VALUES
-('Aero Box'),
-('Gap Shield'),
-('Bumper Shellz');
+('AeroBox'),
+('GapShield'),
+('BumperShellz');
 
 INSERT INTO conditions(condition) VALUES
 ('Good'),
