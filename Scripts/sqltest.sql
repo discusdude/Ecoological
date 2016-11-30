@@ -49,7 +49,7 @@ CREATE TABLE supplies(
     type VARCHAR(255) NOT NULL,
     condition VARCHAR(255) REFERENCES conditions(condition) NOT NULL,
     count INT,
-    PRIMARY KEY(name)
+    PRIMARY KEY(name, product)
     --CONSTRAINT chk_type_supplies CHECK(type IN('Product','Supply'))
 );
 
@@ -110,6 +110,7 @@ CREATE TABLE inventories(
     invid INT IDENTITY,
     date DATE,
     name VARCHAR(255) REFERENCES supplyNames(name) NOT NULL,
+    product VARCHAR(255) REFERENCES productNames(product) NOT NULL,
     condition VARCHAR(255) REFERENCES conditions(condition) NOT NULL,
     type VARCHAR(255) NOT NULL,
     count INT,
