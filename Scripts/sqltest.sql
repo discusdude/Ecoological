@@ -66,8 +66,8 @@ INSERT INTO supplyNames(name) VALUES
 ('Display Product'),
 ('Internet Product'),
 ('75 ft rolls'),
-('Aero Boxes'),
-('Bumper Shellz');
+('AeroBoxes'),
+('BumperShellz');
 
 INSERT INTO productNames(product) VALUES
 ('AeroBox'),
@@ -89,10 +89,10 @@ INSERT INTO discounts(name, condition, discount) VALUES
 ('Internet Product', 'Bad', 0.5),
 ('75 ft rolls', 'Good', 1),
 ('75 ft rolls', 'Bad', 0.5),
-('Aero Boxes', 'Good', 1),
-('Aero Boxes', 'Bad', 0.5),
-('Bumper Shellz', 'Good', 1),
-('Bumper Shellz', 'Bad', 0.5);
+('AeroBoxes', 'Good', 1),
+('AeroBoxes', 'Bad', 0.5),
+('BumperShellz', 'Good', 1),
+('BumperShellz', 'Bad', 0.5);
 
 INSERT INTO basePrices(name, price) VALUES
 ('Display Boxes', 15.00),
@@ -100,8 +100,8 @@ INSERT INTO basePrices(name, price) VALUES
 ('Display Product', 9.99),
 ('Internet Product', 7.00),
 ('75 ft rolls', 5.00),
-('Aero Boxes', 200.00),
-('Bumper Shellz', 14.20);
+('AeroBoxes', 200.00),
+('BumperShellz', 14.20);
 
 --Iventory------------------------------------------------------------------------------------
 IF OBJECT_ID('inventories','U') IS NOT NULL
