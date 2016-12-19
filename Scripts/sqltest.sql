@@ -108,7 +108,7 @@ IF OBJECT_ID('inventories','U') IS NOT NULL
     DROP TABLE inventories;
 CREATE TABLE inventories(
     invid INT IDENTITY,
-    date DATE,
+    date DATETIME,
     name VARCHAR(255) REFERENCES supplyNames(name) NOT NULL,
     product VARCHAR(255) REFERENCES productNames(product) NOT NULL,
     condition VARCHAR(255) REFERENCES conditions(condition) NOT NULL,
