@@ -17,6 +17,8 @@ IF OBJECT_ID('productNames','U') IS NOT NULL
     DROP TABLE productNames;
 IF OBJECT_ID('conditions','U') IS NOT NULL
     DROP TABLE conditions;
+IF OBJECT_ID('bumperShellz','U') IS NOT NULL
+	DROP TABLE bumperShellz;
 
 
 --supplyNames for constraint
@@ -53,7 +55,7 @@ CREATE TABLE supplies(
     type VARCHAR(255) NOT NULL,
     condition VARCHAR(255) REFERENCES conditions(condition) NOT NULL,
     count INT,
-	price MONEY NOT NULL, 
+	price MONEY, 
     PRIMARY KEY(partNumber)
     --CONSTRAINT chk_type_supplies CHECK(type IN('Product','Supply'))
 );
@@ -123,6 +125,7 @@ IF OBJECT_ID('inventories','U') IS NOT NULL
     DROP TABLE inventories;
 CREATE TABLE inventories(
     invid INT IDENTITY,
+	partNumber VARCHAR(255) NOT NULL,
     date DATETIME,
     name VARCHAR(255) REFERENCES supplyNames(name) NOT NULL,
     product VARCHAR(255) REFERENCES productNames(product) NOT NULL,
