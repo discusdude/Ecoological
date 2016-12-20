@@ -44,14 +44,28 @@ CREATE TABLE discounts(
     CONSTRAINT chk_discount CHECK(discount BETWEEN 0 AND 1)
 );
 
+-- "partNumber", "wholesale" and "price" added by Mitchell Evans 12/10/2016 also primary key changed from name and product to partNumber
 CREATE TABLE supplies(
-    name varchar(255) REFERENCES supplyNames(name) NOT NULL,
+    partNumber VARCHAR(255) NOT NULL,
+	wholesale VARCHAR(255) NOT NULL,
+	name varchar(255) REFERENCES supplyNames(name) NOT NULL,
     product VARCHAR(255) REFERENCES productNames(product) NOT NULL,
     type VARCHAR(255) NOT NULL,
     condition VARCHAR(255) REFERENCES conditions(condition) NOT NULL,
     count INT,
-    PRIMARY KEY(name, product)
+	price MONEY NOT NULL, 
+    PRIMARY KEY(partNumber)
     --CONSTRAINT chk_type_supplies CHECK(type IN('Product','Supply'))
+);
+
+
+-- "bumperShellz" created by Mitchell Evans
+CREATE TABLE bumperShellz(
+	partNumber VARCHAR(255) NOT NULL,
+	truckModel VARCHAR(255) NOT NULL,
+	truckYear VARCHAR(255) NOT NULL,
+	sensorHoles VARCHAR(255) NOT NULL,
+	PRIMARY KEY (partNumber)
 );
 
 CREATE TABLE basePrices(

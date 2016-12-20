@@ -3,7 +3,7 @@ $uname = $credential.UserName
 $pass =  $credential.GetNetworkCredential().Password
 $server = "ecooldb.ccd1ufibwvil.us-west-1.rds.amazonaws.com"
 $db = "Ecoolprod"
-$tableSQLPath = "$PSScriptRoot\sqltest.sql"
+$tableSQLPath = "$PSScriptRoot\sqlprod.sql"
 
 #create database
 $command = "USE master;
