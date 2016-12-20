@@ -49,7 +49,7 @@ CREATE TABLE discounts(
 -- "partNumber", "wholesale" and "price" added by Mitchell Evans 12/10/2016 also primary key changed from name and product to partNumber
 CREATE TABLE supplies(
     partNumber VARCHAR(255) NOT NULL,
-	wholesale VARCHAR(255) NOT NULL,
+	wholesale VARCHAR(255),
 	name varchar(255) REFERENCES supplyNames(name) NOT NULL,
     product VARCHAR(255) REFERENCES productNames(product) NOT NULL,
     type VARCHAR(255) NOT NULL,
@@ -78,13 +78,24 @@ CREATE TABLE basePrices(
 
 
 INSERT INTO supplyNames(name) VALUES
-('Display Boxes'),
-('Internet Boxes'),
-('Display Product'),
-('Internet Product'),
-('75 ft rolls'),
-('AeroBoxes'),
-('BumperShellz');
+('Tailgate Gap Cover'),
+('8 Pack'),
+('75 ft roll'),
+('PoP Display'),
+('Gloss Black'),
+('Matte Black'),
+('Carbon Fiber (blk)'),
+('Brushed Metal'),
+('Camouflage (RealTreeMax4)'),
+('Camouflage (Branching Out)'),
+('Camouflage (Mossy Oak Break Up)'),
+('Camouflage (RealTree AP)'),
+('Camouflage (Mossy Oak Duck Blind)'),
+('Gloss White'),
+('ToughShellz (haircell texture, blk ABS)'),
+('Paintable ABS'),
+('Standard Assembly'),
+('Premium Assembly');
 
 INSERT INTO productNames(product) VALUES
 ('AeroBox'),
