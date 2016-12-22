@@ -11,21 +11,25 @@ IF OBJECT_ID('basePrices','U') IS NOT NULL
     DROP TABLE basePrices;
 IF OBJECT_ID('discounts','U') IS NOT NULL
     DROP TABLE discounts;
-IF OBJECT_ID('supplyNames','U') IS NOT NULL
-    DROP TABLE supplyNames;
+--IF OBJECT_ID('supplyNames','U') IS NOT NULL
+--    DROP TABLE supplyNames;
 IF OBJECT_ID('productNames','U') IS NOT NULL
     DROP TABLE productNames;
-IF OBJECT_ID('conditions','U') IS NOT NULL
-    DROP TABLE conditions;
+--IF OBJECT_ID('conditions','U') IS NOT NULL
+--    DROP TABLE conditions;
 IF OBJECT_ID('bumperShellz','U') IS NOT NULL
 	DROP TABLE bumperShellz;
+IF OBJECT_ID('gapShield','U') IS NOT NULL
+	DROP TABLE gapShield;
+IF OBJECT_ID('aeroBox','U') IS NOT NULL
+	DROP TABLE aeroBox;
 
 
 --supplyNames for constraint
-CREATE TABLE supplyNames(
-    name VARCHAR(255) NOT NULL,
-    PRIMARY KEY(name)
-);
+--CREATE TABLE supplyNames(
+--   name VARCHAR(255) NOT NULL,
+--    PRIMARY KEY(name)
+--);
 --productNames for constraint
 CREATE TABLE productNames(
     product VARCHAR(255) NOT NULL,
@@ -33,33 +37,55 @@ CREATE TABLE productNames(
 );
 
 --conditions for constraint
-CREATE TABLE conditions(
-    condition VARCHAR(255) NOT NULL,
-    PRIMARY KEY(condition)
-);
+--CREATE TABLE conditions(
+--    condition VARCHAR(255) NOT NULL,
+--    PRIMARY KEY(condition)
+--);
 
 CREATE TABLE discounts(
-    name VARCHAR(255) REFERENCES supplyNames(name) NOT NULL,
-    condition VARCHAR(255) REFERENCES conditions(condition) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    condition VARCHAR(255) NOT NULL,
     discount FLOAT NOT NULL,
     PRIMARY KEY(name, condition),
     CONSTRAINT chk_discount CHECK(discount BETWEEN 0 AND 1)
 );
 
+-- Talon and I decided to split the bumperShellz table out of the supplies table, so I figured I might as well split the other products out. 12/21/2016
 -- "partNumber", "wholesale" and "price" added by Mitchell Evans 12/10/2016 also primary key changed from name and product to partNumber
 CREATE TABLE supplies(
     partNumber VARCHAR(255) NOT NULL,
 	wholesale VARCHAR(255),
-	name varchar(255) REFERENCES supplyNames(name) NOT NULL,
-    product VARCHAR(255) REFERENCES productNames(product) NOT NULL,
+	name varchar(255) NOT NULL,
+    product VARCHAR(255) NOT NULL,
     type VARCHAR(255) NOT NULL,
-    condition VARCHAR(255) REFERENCES conditions(condition) NOT NULL,
+    condition VARCHAR(255) NOT NULL,
     count INT,
 	price MONEY, 
     PRIMARY KEY(partNumber)
     --CONSTRAINT chk_type_supplies CHECK(type IN('Product','Supply'))
 );
-
+-- "gapShield" created by Mitchell Evans
+CREATE TABLE gapShield(
+    partNumber VARCHAR(255) NOT NULL,
+	wholesale VARCHAR(255),
+	name varchar(255) NOT NULL,
+    condition VARCHAR(255) NOT NULL,
+    count INT,
+	price MONEY, 
+    PRIMARY KEY(partNumber)
+    --CONSTRAINT chk_type_supplies CHECK(type IN('Product','Supply'))
+);
+-- "aeroBox" created by Mitchell Evans
+CREATE TABLE aeroBox(
+    partNumber VARCHAR(255) NOT NULL,
+	wholesale VARCHAR(255),
+	name varchar(255) NOT NULL,
+    condition VARCHAR(255) NOT NULL,
+    count INT,
+	price MONEY, 
+    PRIMARY KEY(partNumber)
+    --CONSTRAINT chk_type_supplies CHECK(type IN('Product','Supply'))
+);
 
 -- "bumperShellz" created by Mitchell Evans
 CREATE TABLE bumperShellz(
@@ -67,44 +93,52 @@ CREATE TABLE bumperShellz(
 	truckModel VARCHAR(255) NOT NULL,
 	truckYear VARCHAR(255) NOT NULL,
 	sensorHoles VARCHAR(255) NOT NULL,
-	PRIMARY KEY (partNumber)
+	frontOrRear VARCHAR(255) NOT NULL,
+	fogLamps VARCHAR(255) NOT NULL,
+	exhaust VARCHAR(255) NOT NULL,
+	UPC VARCHAR(255),
+	name varchar(255) NOT NULL,
+    condition VARCHAR(255) NOT NULL,
+    count INT,
+	price MONEY, 
+	PRIMARY KEY (partNumber,truckModel)
 );
 
 CREATE TABLE basePrices(
-    name VARCHAR(255) REFERENCES supplyNames(name) NOT NULL,
+    name VARCHAR(255) NOT NULL,
     price MONEY NOT NULL,
     PRIMARY KEY(name)
 );
 
 
-INSERT INTO supplyNames(name) VALUES
-('Tailgate Gap Cover'),
-('8 Pack'),
-('75 ft roll'),
-('PoP Display'),
-('Gloss Black'),
-('Matte Black'),
-('Carbon Fiber (blk)'),
-('Brushed Metal'),
-('Camouflage (RealTreeMax4)'),
-('Camouflage (Branching Out)'),
-('Camouflage (Mossy Oak Break Up)'),
-('Camouflage (RealTree AP)'),
-('Camouflage (Mossy Oak Duck Blind)'),
-('Gloss White'),
-('ToughShellz (haircell texture, blk ABS)'),
-('Paintable ABS'),
-('Standard Assembly'),
-('Premium Assembly');
+--INSERT INTO supplyNames(name) VALUES
+--('Tailgate Gap Cover'),
+--('8 Pack'),
+--('75 ft roll'),
+--('PoP Display'),
+--('Gloss Black'),
+--('Matte Black'),
+--('Carbon Fiber (blk)'),
+--('Brushed Metal'),
+--('Camouflage (RealTreeMax4)'),
+--('Camouflage (Branching Out)'),
+--('Camouflage (Mossy Oak Break Up)'),
+--('Camouflage (RealTree AP)'),
+--('Camouflage (Mossy Oak Duck Blind)'),
+--('Gloss White'),
+--('ToughShellz (haircell texture, blk ABS)'),
+--('Paintable ABS'),
+--('Standard Assembly'),
+--('Premium Assembly');
 
 INSERT INTO productNames(product) VALUES
 ('AeroBox'),
 ('GapShield'),
 ('BumperShellz');
 
-INSERT INTO conditions(condition) VALUES
-('Good'),
-('Bad');
+--INSERT INTO conditions(condition) VALUES
+--('Good'),
+--('Bad');
 
 INSERT INTO discounts(name, condition, discount) VALUES
 ('Display Boxes', 'Good', 1),
@@ -138,9 +172,9 @@ CREATE TABLE inventories(
     invid INT IDENTITY,
 	partNumber VARCHAR(255) NOT NULL,
     date DATETIME,
-    name VARCHAR(255) REFERENCES supplyNames(name) NOT NULL,
-    product VARCHAR(255) REFERENCES productNames(product) NOT NULL,
-    condition VARCHAR(255) REFERENCES conditions(condition) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    product VARCHAR(255) NOT NULL,
+    condition VARCHAR(255)NOT NULL,
     type VARCHAR(255) NOT NULL,
     count INT,
     PRIMARY KEY(invid)
@@ -202,7 +236,7 @@ IF OBJECT_ID('sales','U') IS NOT NULL
     DROP TABLE sales;
 CREATE TABLE sales(
     date DATETIME NOT NULL,
-    name VARCHAR(255) REFERENCES supplyNames(name) NOT NULL,
+    name VARCHAR(255) NOT NULL,
     count INT NOT NULL,
     PRIMARY KEY (date, name)
 )
