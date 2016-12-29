@@ -53,15 +53,11 @@ CREATE TABLE discounts(
 -- Talon and I decided to split the bumperShellz table out of the supplies table, so I figured I might as well split the other products out. 12/21/2016
 -- "partNumber", "wholesale" and "price" added by Mitchell Evans 12/10/2016 also primary key changed from name and product to partNumber
 CREATE TABLE supplies(
-    partNumber VARCHAR(255) NOT NULL,
-	wholesale VARCHAR(255),
 	name varchar(255) NOT NULL,
     product VARCHAR(255) NOT NULL,
-    type VARCHAR(255) NOT NULL,
-    condition VARCHAR(255) NOT NULL,
     count INT,
 	price MONEY, 
-    PRIMARY KEY(partNumber)
+    PRIMARY KEY(name, product)
     --CONSTRAINT chk_type_supplies CHECK(type IN('Product','Supply'))
 );
 -- "gapShield" created by Mitchell Evans
@@ -100,9 +96,18 @@ CREATE TABLE bumperShellz(
 	UPC VARCHAR(255),
 	name varchar(255) NOT NULL,
     condition VARCHAR(10) NOT NULL,
+	whip INT NOT NULL,
     count INT,
 	price MONEY, 
-	PRIMARY KEY (partNumber,truckModel,rightLeftCenter,condition)
+	PRIMARY KEY (partNumber,truckModel,rightLeftCenter,condition,whip)
+);
+
+CREATE TABLE plasticSheet(
+	name VARCHAR(255) NOT NULL,
+	sheetLength VARCHAR(255) NOT NULL,
+	sheetWidth VARCHAR(255) NOT NULL,
+	count INT,
+	PRIMARY KEY (name, sheetLength, sheetWidth)
 );
 
 CREATE TABLE basePrices(
