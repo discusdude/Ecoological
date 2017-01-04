@@ -17,8 +17,22 @@ IF OBJECT_ID('productNames','U') IS NOT NULL
     DROP TABLE productNames;
 --IF OBJECT_ID('conditions','U') IS NOT NULL
 --    DROP TABLE conditions;
-IF OBJECT_ID('bumperShellz','U') IS NOT NULL
-	DROP TABLE bumperShellz;
+IF OBJECT_ID('bumperShellzRight2','U') IS NOT NULL
+	DROP TABLE bumperShellzRight2;
+IF OBJECT_ID('bumperShellzLeft2','U') IS NOT NULL
+	DROP TABLE bumperShellzLeft2;
+IF OBJECT_ID('bumperShellzCenter2','U') IS NOT NULL
+	DROP TABLE bumperShellzCenter2;
+IF OBJECT_ID('bumperShellzRightLeft1','U') IS NOT NULL
+	DROP TABLE bumperShellzRightLeft1;
+IF OBJECT_ID('bumperShellzCenter1','U') IS NOT NULL
+	DROP TABLE bumperShellzCenter1;
+IF OBJECT_ID('bumperShellzRight2B','U') IS NOT NULL
+	DROP TABLE bumperShellzRight2B;
+IF OBJECT_ID('bumperShellzLeft2','U') IS NOT NULL
+	DROP TABLE bumperShellzLeft2B;
+IF OBJECT_ID('bumperShellzCenter2','U') IS NOT NULL
+	DROP TABLE bumperShellzCenter2B;
 IF OBJECT_ID('gapShield','U') IS NOT NULL
 	DROP TABLE gapShield;
 IF OBJECT_ID('aeroBox','U') IS NOT NULL
@@ -165,6 +179,63 @@ CREATE TABLE bumperShellzCenter1(
     count INT,
 	price MONEY, 
 	PRIMARY KEY (partNumber,truckModel,condition)
+);
+ -- B-Stock BumperShellz
+ CREATE TABLE bumperShellzRight2B(
+	partNumber VARCHAR(255) NOT NULL,
+	truckModel VARCHAR(255) NOT NULL,
+	truckYear VARCHAR(255) NOT NULL,
+	sensorHoles VARCHAR(10) NOT NULL,
+	frontOrRear VARCHAR(10) NOT NULL,	
+	fogLamps VARCHAR(10) NOT NULL,
+	exhaust VARCHAR(10) NOT NULL,
+	UPC VARCHAR(255),
+	name varchar(255) NOT NULL,
+    condition VARCHAR(10) NOT NULL,
+    count INT,
+	price MONEY, 
+	PRIMARY KEY (partNumber,truckModel,condition)
+);
+
+-- "bumperShellz" created by Mitchell Evans
+CREATE TABLE bumperShellzLeft2B(
+	partNumber VARCHAR(255) NOT NULL,
+	truckModel VARCHAR(255) NOT NULL,
+	truckYear VARCHAR(255) NOT NULL,
+	sensorHoles VARCHAR(10) NOT NULL,
+	frontOrRear VARCHAR(10) NOT NULL,	
+	fogLamps VARCHAR(10) NOT NULL,
+	exhaust VARCHAR(10) NOT NULL,
+	UPC VARCHAR(255),
+	name varchar(255) NOT NULL,
+    condition VARCHAR(10) NOT NULL,
+    count INT,
+	price MONEY, 
+	PRIMARY KEY (partNumber,truckModel,condition)
+);
+
+-- "bumperShellz" created by Mitchell Evans
+CREATE TABLE bumperShellzCenter2B(
+	partNumber VARCHAR(255) NOT NULL,
+	truckModel VARCHAR(255) NOT NULL,
+	truckYear VARCHAR(255) NOT NULL,
+	sensorHoles VARCHAR(10) NOT NULL,
+	frontOrRear VARCHAR(10) NOT NULL,	
+	fogLamps VARCHAR(10) NOT NULL,
+	exhaust VARCHAR(10) NOT NULL,
+	UPC VARCHAR(255),
+	name varchar(255) NOT NULL,
+    condition VARCHAR(10) NOT NULL,
+    count INT,
+	price MONEY, 
+	PRIMARY KEY (partNumber,truckModel,condition)
+);
+
+-- B-Stock BumperShellz End
+
+
+
+
 
 
 CREATE TABLE plasticSheet(
@@ -247,7 +318,7 @@ CREATE TABLE inventories(
     name VARCHAR(255) NOT NULL,
     product VARCHAR(255) NOT NULL,
     condition VARCHAR(255)NOT NULL,
-	rightLeftCenter varchar(10)NOT NULL
+	rightLeftCenter varchar(10),
 	whip INT,
     type VARCHAR(255) NOT NULL,
     count INT,
