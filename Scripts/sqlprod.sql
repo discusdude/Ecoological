@@ -39,6 +39,11 @@ IF OBJECT_ID('gapShield','U') IS NOT NULL
 	DROP TABLE gapShield;
 IF OBJECT_ID('aeroBox','U') IS NOT NULL
 	DROP TABLE aeroBox;
+IF OBJECT_ID('cardboardBoxes','U') IS NOT NULL
+	DROP TABLE cardboardBoxes;
+
+
+	
 
 
 --supplyNames for constraint
@@ -260,6 +265,14 @@ CREATE TABLE plasticSheet(
 	sheetWidth VARCHAR(255) NOT NULL,
 	count INT,
 	PRIMARY KEY (partNumber)
+);
+
+CREATE TABLE cardboardBoxes(
+	boxLength VARCHAR(255) NOT NULL,
+	boxWidth VARCHAR(255) NOT NULL,
+	boxHeight VARCHAR(255) NOT NULL,
+	count INT,
+	PRIMARY KEY (boxLength, boxWidth, boxHeight)
 );
 
 CREATE TABLE basePrices(
