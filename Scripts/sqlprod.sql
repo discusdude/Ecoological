@@ -286,11 +286,12 @@ CREATE TABLE plasticSheet(
 );
 
 CREATE TABLE cardboardBoxes(
+	boxID INT IDENTITY,
 	boxLength VARCHAR(255) NOT NULL,
 	boxWidth VARCHAR(255) NOT NULL,
 	boxHeight VARCHAR(255) NOT NULL,
 	count INT,
-	PRIMARY KEY (boxLength, boxWidth, boxHeight)
+	PRIMARY KEY (boxID)
 );
 
 CREATE TABLE basePrices(
