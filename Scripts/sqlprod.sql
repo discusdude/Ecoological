@@ -461,13 +461,13 @@ CREATE TABLE employees(
     firstName VARCHAR(255) NOT NULL,
     deptID INT,
     DoB DATE NOT NULL,
-    CONSTRAINT FK_employees_departments FOREIGN KEY (deptID) REFERENCES departments(deptID) ON DELETE CASCADE ON UPDATE CASCADE,
+    --CONSTRAINT FK_employees_departments FOREIGN KEY (deptID) REFERENCES departments(deptID) ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY (empId)
 )
 CREATE TABLE empPhones(
     empID INT NOT NULL,
     phoneNumber VARCHAR(15),
-    CONSTRAINT FK_empphones_empid FOREIGN KEY (empID) REFERENCES employees(empID) ON DELETE CASCADE ON UPDATE CASCADE,
+    --CONSTRAINT FK_empphones_empid FOREIGN KEY (empID) REFERENCES employees(empID) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT chk_EmpPhoneNumber CHECK(phoneNumber LIKE '[0-9][0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]')
 );
 
