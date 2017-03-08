@@ -255,9 +255,6 @@ CREATE TABLE bumperShellzCenter2B(
 
 
 
-
-
-
 CREATE TABLE plasticSheet(
 	partNumber VARCHAR(255) NOT NULL,
 	name VARCHAR(255) NOT NULL,
@@ -408,10 +405,11 @@ INSERT INTO states(code, name) VALUES ('AL','Alabama'), ('AK','Alaska'), ('AS','
 IF OBJECT_ID('sales','U') IS NOT NULL
     DROP TABLE sales;
 CREATE TABLE sales(
+	partNumber VARCHAR(255) NOT NULL,
     date DATETIME NOT NULL,
-    name VARCHAR(255) NOT NULL,
+    empID VARCHAR(255) NOT NULL,
     count INT NOT NULL,
-    PRIMARY KEY (date, name)
+    PRIMARY KEY (date, partNumber)
 )
 
 --Patents
@@ -439,7 +437,7 @@ CREATE TABLE departments(
 --Employees
 --Need trigger for age or view
 CREATE TABLE employees(
-    empID INT IDENTITY,
+    empID VARCHAR(255) NOT NULL,
     lastName VARCHAR(255) NOT NULL,
     firstName VARCHAR(255) NOT NULL,
     deptID INT,
