@@ -116,7 +116,9 @@ CREATE TABLE bumperShellzRight2(
 	name varchar(255) NOT NULL,
     condition VARCHAR(10) NOT NULL,
     count INT,
-	price MONEY, 
+	price MONEY,
+	threshold INT,
+	boxID INT, 
 	PRIMARY KEY (partNumber,truckModel,condition)
 );
 
@@ -133,7 +135,9 @@ CREATE TABLE bumperShellzLeft2(
 	name varchar(255) NOT NULL,
     condition VARCHAR(10) NOT NULL,
     count INT,
-	price MONEY, 
+	price MONEY,
+	threshold INT,
+	boxID INT, 
 	PRIMARY KEY (partNumber,truckModel,condition)
 );
 
@@ -150,7 +154,9 @@ CREATE TABLE bumperShellzCenter2(
 	name varchar(255) NOT NULL,
     condition VARCHAR(10) NOT NULL,
     count INT,
-	price MONEY, 
+	price MONEY,
+	threshold INT,
+	boxID INT, 
 	PRIMARY KEY (partNumber,truckModel,condition)
 );
 
@@ -166,7 +172,9 @@ CREATE TABLE bumperShellzCenter2(
 	name varchar(255) NOT NULL,
     condition VARCHAR(10) NOT NULL,
     count INT,
-	price MONEY, 
+	price MONEY,
+	threshold INT,
+	boxID INT, 
 	PRIMARY KEY (partNumber,truckModel,condition)
 );
 
@@ -182,7 +190,9 @@ CREATE TABLE bumperShellzLeft1(
 	name varchar(255) NOT NULL,
     condition VARCHAR(10) NOT NULL,
     count INT,
-	price MONEY, 
+	price MONEY,
+	threshold INT,
+	boxID INT, 
 	PRIMARY KEY (partNumber,truckModel,condition)
 );
 
@@ -198,7 +208,9 @@ CREATE TABLE bumperShellzCenter1(
 	name varchar(255) NOT NULL,
     condition VARCHAR(10) NOT NULL,
     count INT,
-	price MONEY, 
+	price MONEY,
+	threshold INT,
+	boxID INT, 
 	PRIMARY KEY (partNumber,truckModel,condition)
 );
 
@@ -214,7 +226,9 @@ CREATE TABLE bumperShellzCenter1(
 	name varchar(255) NOT NULL,
     condition VARCHAR(10) NOT NULL,
     count INT,
-	price MONEY, 
+	price MONEY,
+	threshold INT,
+	boxID INT, 
 	PRIMARY KEY (partNumber,truckModel,condition)
 );
 
@@ -230,7 +244,9 @@ CREATE TABLE bumperShellzLeft2B(
 	name varchar(255) NOT NULL,
     condition VARCHAR(10) NOT NULL,
     count INT,
-	price MONEY, 
+	price MONEY,
+	threshold INT,
+	boxID INT, 
 	PRIMARY KEY (partNumber,truckModel,condition)
 );
 
@@ -247,7 +263,9 @@ CREATE TABLE bumperShellzCenter2B(
 	name varchar(255) NOT NULL,
     condition VARCHAR(10) NOT NULL,
     count INT,
-	price MONEY, 
+	price MONEY,
+	threshold INT,
+	boxID INT, 
 	PRIMARY KEY (partNumber,truckModel,condition)
 );
 
@@ -265,11 +283,12 @@ CREATE TABLE plasticSheet(
 );
 
 CREATE TABLE cardboardBoxes(
+	boxID INT IDENTITY,
 	boxLength VARCHAR(255) NOT NULL,
 	boxWidth VARCHAR(255) NOT NULL,
 	boxHeight VARCHAR(255) NOT NULL,
 	count INT,
-	PRIMARY KEY (boxLength, boxWidth, boxHeight)
+	PRIMARY KEY (boxID)
 );
 
 CREATE TABLE basePrices(
