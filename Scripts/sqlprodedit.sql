@@ -16,7 +16,6 @@ CREATE TABLE employees(
     lastName VARCHAR(255) NOT NULL,
     firstName VARCHAR(255) NOT NULL,
     deptID INT,
-    DoB DATE NOT NULL,
     CONSTRAINT FK_employees_departments FOREIGN KEY (deptID) REFERENCES departments(deptID) ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY (empId)
 )
