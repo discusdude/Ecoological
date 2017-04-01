@@ -282,6 +282,7 @@ CREATE TABLE plasticSheet(
 	sheetLength VARCHAR(255) NOT NULL,
 	sheetWidth VARCHAR(255) NOT NULL,
 	count INT,
+	threshold INT,
 	PRIMARY KEY (partNumber)
 );
 
