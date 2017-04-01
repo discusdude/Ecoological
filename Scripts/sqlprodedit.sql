@@ -1,8 +1,8 @@
+
 IF OBJECT_ID('employees','U') IS NOT NULL
     DROP TABLE employees;
-
 CREATE TABLE employees(
-    empID INT IDENTITY,
+    empID VARCHAR(255) NOT NULL,
     lastName VARCHAR(255) NOT NULL,
     firstName VARCHAR(255) NOT NULL,
     deptID INT,
