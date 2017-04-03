@@ -1,11 +1,21 @@
 
-IF OBJECT_ID('employees','U') IS NOT NULL
-    DROP TABLE employees;
-CREATE TABLE employees(
+IF OBJECT_ID('scrap','U') IS NOT NULL
+    DROP TABLE scrap;
+CREATE TABLE scrap(
+    scrapId INT IDENTITY,
+    plasticSheetPartNumber VARCHAR(255) NOT NULL,
+    truckModel VARCHAR(255) NOT NULL,
+	truckYear VARCHAR(255) NOT NULL,
+	sensorHoles VARCHAR(10) NOT NULL,
+	frontOrRear VARCHAR(10) NOT NULL,
+    PRIMARY KEY (scrapId)
+)
+
+IF OBJECT_ID('scrapHistory','U') IS NOT NULL
+    DROP TABLE scrapHistory;
+CREATE TABLE scrapHistory(
+    scrapHistoryId INT IDENTITY,
+    scrapId INT NOT NULL,
     empID VARCHAR(255) NOT NULL,
-    lastName VARCHAR(255) NOT NULL,
-    firstName VARCHAR(255) NOT NULL,
-    deptID INT,
-    CONSTRAINT FK_employees_departments FOREIGN KEY (deptID) REFERENCES departments(deptID) ON DELETE CASCADE ON UPDATE CASCADE,
-    PRIMARY KEY (empId)
+    PRIMARY KEY (scrapHistoryId)
 )
