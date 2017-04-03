@@ -14,8 +14,9 @@ CREATE TABLE scrap(
 IF OBJECT_ID('scrapHistory','U') IS NOT NULL
     DROP TABLE scrapHistory;
 CREATE TABLE scrapHistory(
-    scrapHistoryId INT IDENTITY,
     scrapId INT NOT NULL,
+    date DATETIME NOT NULL,
     empID VARCHAR(255) NOT NULL,
-    PRIMARY KEY (scrapHistoryId)
+    count int NOT NULL,
+    PRIMARY KEY (date, scrapId)
 )
