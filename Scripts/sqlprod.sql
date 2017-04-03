@@ -302,6 +302,7 @@ CREATE TABLE scrap(
     truckModel VARCHAR(255) NOT NULL,
 	truckYear VARCHAR(255) NOT NULL,
 	frontOrRear VARCHAR(10) NOT NULL,
+	count INT,
     PRIMARY KEY (scrapId)
 )
 

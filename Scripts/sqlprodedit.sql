@@ -1,4 +1,3 @@
-
 IF OBJECT_ID('scrap','U') IS NOT NULL
     DROP TABLE scrap;
 CREATE TABLE scrap(
@@ -6,8 +5,8 @@ CREATE TABLE scrap(
     plasticSheetPartNumber VARCHAR(255) NOT NULL,
     truckModel VARCHAR(255) NOT NULL,
 	truckYear VARCHAR(255) NOT NULL,
-	sensorHoles VARCHAR(10) NOT NULL,
 	frontOrRear VARCHAR(10) NOT NULL,
+    count INT,
     PRIMARY KEY (scrapId)
 )
 
