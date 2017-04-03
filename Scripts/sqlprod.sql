@@ -41,6 +41,10 @@ IF OBJECT_ID('aeroBox','U') IS NOT NULL
 	DROP TABLE aeroBox;
 IF OBJECT_ID('cardboardBoxes','U') IS NOT NULL
 	DROP TABLE cardboardBoxes;
+IF OBJECT_ID('scrap','U') IS NOT NULL
+    DROP TABLE scrap;
+IF OBJECT_ID('scrapHistory','U') IS NOT NULL
+    DROP TABLE scrapHistory;
 
 
 	
@@ -291,6 +295,23 @@ CREATE TABLE cardboardBoxes(
 	count INT,
 	PRIMARY KEY (boxID)
 );
+
+CREATE TABLE scrap(
+    scrapId INT IDENTITY,
+    plasticSheetPartNumber VARCHAR(255) NOT NULL,
+    truckModel VARCHAR(255) NOT NULL,
+	truckYear VARCHAR(255) NOT NULL,
+	frontOrRear VARCHAR(10) NOT NULL,
+    PRIMARY KEY (scrapId)
+)
+
+CREATE TABLE scrapHistory(
+    scrapId INT NOT NULL,
+    date DATETIME NOT NULL,
+    empID VARCHAR(255) NOT NULL,
+    count int NOT NULL,
+    PRIMARY KEY (date, scrapId)
+)
 
 CREATE TABLE basePrices(
     name VARCHAR(255) NOT NULL,
